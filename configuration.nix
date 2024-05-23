@@ -110,7 +110,7 @@
     nil
     signal-cli
     gurk-rs
-
+    hello
   ];
 
   # gaming
