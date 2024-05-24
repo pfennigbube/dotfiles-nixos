@@ -106,11 +106,10 @@
     btop
     zsh
     helix
-    # languages
-    nil
     signal-cli
     gurk-rs
-    hello
+    # languages
+    nil
   ];
 
   # gaming
