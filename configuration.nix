@@ -73,7 +73,6 @@
     librewolf
     mangohud
     dolphin
-    cava
     kitty
     waybar
     (pkgs.waybar.overrideAttrs (oldAttrs: {
@@ -106,10 +105,17 @@
     btop
     zsh
     helix
-    signal-cli
-    gurk-rs
+    signal-desktop
+    spotifyd
     # languages
     nil
+    rustup
+    # tui application (the funny ones)
+    wiki-tui
+    cava
+    youtube-tui
+    xplr
+
   ];
 
   # gaming
@@ -183,6 +189,8 @@
     extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
   };
 
+  # printing service
+  services.printing.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

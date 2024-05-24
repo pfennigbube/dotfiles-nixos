@@ -10,29 +10,26 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, ... } @ inputs:
-  let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-	config = {
-	  allowUnfree = true;
-	};
+  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config = { allowUnfree = true; };
       };
-  in
-  {
+    in {
 
-    nixosConfigurations = {
-      default = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs system; };
+      nixosConfigurations = {
+        default = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs system; };
 
-        modules = [
-          ./configuration.nix
-          inputs.home-manager.nixosModules.default
-          inputs.stylix.nixosModules.stylix
-        ];
+          modules = [
+            ./configuration.nix
+            inputs.home-manager.nixosModules.default
+            inputs.stylix.nixosModules.stylix
+          ];
+        };
       };
     };
-  };
 }
 
