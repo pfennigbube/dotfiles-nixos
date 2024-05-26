@@ -107,6 +107,7 @@
     helix
     signal-desktop
     spotifyd
+    heroic
     # languages
     nil
     rustup
