@@ -44,6 +44,9 @@
     }];
   };
 
+  # qutebrowser
+  programs.qutebrowser = { enable = true; };
+
   # waybar
   programs.waybar = {
     enable = true;

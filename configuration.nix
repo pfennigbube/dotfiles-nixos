@@ -108,6 +108,9 @@
     signal-desktop
     spotifyd
     heroic
+    ungoogled-chromium
+    qutebrowser
+    widevine-cdm
     # languages
     nil
     rustup
@@ -117,6 +120,13 @@
     youtube-tui
     xplr
 
+  ];
+
+  # widevine (?)
+  nixpkgs.overlays = [
+    (final: prev: {
+      qutebrowser = prev.qutebrowser.override { enableWideVine = true; };
+    })
   ];
 
   # gaming
