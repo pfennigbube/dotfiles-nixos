@@ -4,14 +4,13 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     stylix.url = "github:danth/stylix";
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, spicetify-nix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -22,13 +21,12 @@
 
       nixosConfigurations = {
         default = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs system spicetify-nix; };
+          specialArgs = { inherit inputs system; };
 
           modules = [
             ./configuration.nix
             inputs.home-manager.nixosModules.default
             inputs.stylix.nixosModules.stylix
-            ./spicetify.nix
           ];
         };
       };
