@@ -47,6 +47,16 @@
   # qutebrowser
   programs.qutebrowser = { enable = true; };
 
+  # librwolf
+  programs.librewolf = {
+    enable = true;
+    settings = {
+      "webgl.disabled" = false;
+      "privacy.resistFingerprinting" = true;
+      "middlemouse.paste" = true;
+    };
+  };
+
   # waybar
   programs.waybar = {
     enable = true;
