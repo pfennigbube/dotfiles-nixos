@@ -47,7 +47,9 @@ now you should not have to care about anything anymore and just [rebuild the fla
 ```bash
 sudo nixos-rebuild switch --flake .#yourcomputerhostname
 ```
-("yourcomputerhostname has to be changed to the name of your machine (#default should work fine tho)
+("yourcomputerhostname" has to be changed to the name of your machine (#default should work fine tho))
+
+
 and thats it! after some waiting you can reboot your pc and it should look just like mine!
   # Troubleshooting
   - just contact me or open an issue!
