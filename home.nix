@@ -3,7 +3,7 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  imports = [ ./zsh.nix ./hypr/hyprland.conf ];
+  imports = [ ./zsh.nix ./hypr/hyprland.nix ];
   home.username = "yuna";
   home.homeDirectory = "/home/yuna";
 
