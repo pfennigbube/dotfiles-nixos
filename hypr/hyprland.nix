@@ -6,8 +6,7 @@
     settings = {
       "$mainMod" = "SUPER";
 
-      monitor = [ "DP-2,1920x1080@144,1680x0,1" "HDMI-A-1,1680x1050@60,0x0,1" ];
-
+      monitor = "DP-2,1920x1080@144,1680x0,1";
       env = [
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
