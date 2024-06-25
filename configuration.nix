@@ -9,8 +9,6 @@
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
   ];
-  # hyprland
-  programs.hyprland.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -110,6 +108,7 @@
     qutebrowser
     widevine-cdm
     github-desktop
+    fastfetch
     # languages
     nil
     rustup
@@ -118,6 +117,9 @@
     cava
     youtube-tui
     xplr
+    # WMs
+    hyprland
+    xdg-desktop-portal-hyprland
 
   ];
 
