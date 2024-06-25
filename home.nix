@@ -44,7 +44,7 @@
     languages.language = [{
       name = "nix";
       auto-format = true;
-      formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+      formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt-classic";
     }];
   };
 
@@ -61,6 +61,18 @@
     };
   };
 
+  # extra wayland 
+  wayland.windowManager.hyprland.extraConfig = ''
+    monitor = DP-2,1920x1080@144,1680x0,1
+    monitor = HDMI-A-1,1680x1050@60,0x0,1  
+    workspace = 1, monitor:DP-2
+    workspace = 2, monitor:HDMI-A-1
+    workspace = 3, monitor:DP-2
+    workspace = 4, monitor:HDMI-A-1
+    workspace = 5, monitor:DP-2
+    workspace = 6, monitor:HDMI-A-1
+    workspace = 7, monitor:DP-2
+  '';
   # waybar
   programs.waybar = {
     enable = true;
