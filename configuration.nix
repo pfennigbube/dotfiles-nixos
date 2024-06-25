@@ -110,6 +110,7 @@
     github-desktop
     fastfetch
     nwg-displays
+    gimp
     # languages
     nil
     rustup
