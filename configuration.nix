@@ -111,6 +111,7 @@
     ungoogled-chromium
     qutebrowser
     widevine-cdm
+    github-desktop
     # languages
     nil
     rustup
