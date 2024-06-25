@@ -52,7 +52,7 @@ sudo nixos-rebuild switch --flake .#yourcomputerhostname
 
 and thats it! after some waiting you can reboot your pc and it should look just like mine!
   # Troubleshooting
-  - just contact me or open an issue!
+  - just contact me or [open an issue](https://github.com/pfennigbube/dotfiles-nixos/issues)!
 
 **Happy Coding!** 💚
 
