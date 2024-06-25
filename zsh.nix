@@ -14,8 +14,7 @@
 
       hms = "home-manager switch --flake ${flakeDir}";
 
-      conf = "hx ${flakeDir}/nixos/configuration.nix";
-      pkgs = "hx ${flakeDir}/nixos/packages.nix";
+      conf = "hx ${flakeDir}/configuration.nix";
 
       ll = "ls -l";
       v = "hx";

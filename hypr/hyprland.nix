@@ -6,15 +6,16 @@
     settings = {
       "$mainMod" = "SUPER";
 
-      monitor = ",1920x1080@90,auto,1";
+      monitor = "DP-2,1920x1080@144,1680x0,1";
+      monitor = "HDMI-A-1,1680x1050@60,0x0,1";
 
       env = [
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
-        "XCURSOR_SIZE,36"
+        "XCURSOR_SIZE,24"
         "QT_QPA_PLATFORM,wayland"
-        "XDG_SCREENSHOTS_DIR,~/screens"
+        "WLR_DRM_NO_ATOMIC,1"
       ];
 
       debug = {
@@ -30,14 +31,18 @@
         touchpad = { natural_scroll = false; };
 
         sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+        accel_profile = "flat";
+        force_no_accel = true
+        
       };
 
       general = {
         gaps_in = 5;
-        gaps_out = 20;
-        border_size = 3;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
+        gaps_out = 15;
+        border_size = 2;
+        "col.active_border" = "rgb(b4befe)";
+        "col.inactive_border" = "rgb(45475a)";
+        allow_tearing = true;
 
         layout = "dwindle";
 
@@ -45,16 +50,18 @@
       };
 
       decoration = {
-        rounding = 10;
+        rounding = 6;
+        active_opacity = 0.98;
+        inactive_opacity = 0.98;
 
         blur = {
           enabled = true;
           size = 16;
-          passes = 2;
+          passes = 1;
           new_optimizations = true;
         };
 
-        drop_shadow = true;
+        drop_shadow = false;
         shadow_range = 4;
         shadow_render_power = 3;
         "col.shadow" = "rgba(1a1a1aee)";
@@ -95,50 +102,48 @@
       misc = {
         animate_manual_resizes = true;
         animate_mouse_windowdragging = true;
-        enable_swallow = true;
         render_ahead_of_time = false;
         disable_hyprland_logo = true;
+        vrr = 2;
       };
 
       windowrule = [ "float, ^(imv)$" "float, ^(mpv)$" ];
+      windowrulev2 = [ "immediate, class:^(steam_app_\d+)"];
 
       exec-once = [
         "swww init"
-        "swww img ~/Downloads/nixos-chan.png"
+        "swww img ~/dotfiles-nixos/wallpaper/cogecha1.png"
         "waybar"
-        "wl-paste --type text --watch cliphist store"
-        "wl-paste --type image --watch cliphist store"
       ];
 
       bind = [
         "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
 
-        "$mainMod, Return, exec, alacritty"
+        "$mainMod, Return, exec, kitty"
         "$mainMod, Q, killactive,"
         "$mainMod, M, exit,"
-        "$mainMod, E, exec, dolphin"
+        "$mainMod, E, exec, thunar"
         "$mainMod, F, togglefloating,"
         "$mainMod, D, exec, wofi --show drun"
         "$mainMod, P, pseudo, # dwindle"
-        "$mainMod, J, togglesplit, # dwindle"
-
+        
         # Move focus with mainMod + arrow keys
-        "$mainMod, left,  movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up,    movefocus, u"
-        "$mainMod, down,  movefocus, d"
+        "$mainMod, h,  movefocus, l"
+        "$mainMod, l, movefocus, r"
+        "$mainMod, k,    movefocus, u"
+        "$mainMod, j,  movefocus, d"
 
         # Moving windows
-        "$mainMod SHIFT, left,  swapwindow, l"
-        "$mainMod SHIFT, right, swapwindow, r"
-        "$mainMod SHIFT, up,    swapwindow, u"
-        "$mainMod SHIFT, down,  swapwindow, d"
+        "$mainMod SHIFT, h,  swapwindow, l"
+        "$mainMod SHIFT, l, swapwindow, r"
+        "$mainMod SHIFT, k,    swapwindow, u"
+        "$mainMod SHIFT, j,  swapwindow, d"
 
         # Window resizing                     X  Y
-        "$mainMod CTRL, left,  resizeactive, -60 0"
-        "$mainMod CTRL, right, resizeactive,  60 0"
-        "$mainMod CTRL, up,    resizeactive,  0 -60"
-        "$mainMod CTRL, down,  resizeactive,  0  60"
+        "$mainMod CTRL, h,  resizeactive, -60 0"
+        "$mainMod CTRL, l, resizeactive,  60 0"
+        "$mainMod CTRL, k,    resizeactive,  0 -60"
+        "$mainMod CTRL, j,  resizeactive,  0  60"
 
         # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"
@@ -168,35 +173,8 @@
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
 
-        # Keyboard backlight
-        "$mainMod, F3, exec, brightnessctl -d *::kbd_backlight set +33%"
-        "$mainMod, F2, exec, brightnessctl -d *::kbd_backlight set 33%-"
-
-        # Volume and Media Control
-        ", XF86AudioRaiseVolume, exec, pamixer -i 5 "
-        ", XF86AudioLowerVolume, exec, pamixer -d 5 "
-        ", XF86AudioMute, exec, pamixer -t"
-        ", XF86AudioMicMute, exec, pamixer --default-source -m"
-
-        # Brightness control
-        ", XF86MonBrightnessDown, exec, brightnessctl set 5%- "
-        ", XF86MonBrightnessUp, exec, brightnessctl set +5% "
-
-        # Configuration files
-        ''$mainMod SHIFT, N, exec, alacritty -e sh -c "rb"''
-        ''$mainMod SHIFT, C, exec, alacritty -e sh -c "conf"''
-        ''
-          $mainMod SHIFT, H, exec, alacritty -e sh -c "nvim ~/nix/home-manager/modules/wms/hyprland.nix"''
-        ''
-          $mainMod SHIFT, W, exec, alacritty -e sh -c "nvim ~/nix/home-manager/modules/wms/waybar.nix''
-        '', Print, exec, grim -g "$(slurp)" - | swappy -f -''
-
-        # Waybar
-        "$mainMod, B, exec, pkill -SIGUSR1 waybar"
-        "$mainMod, W, exec, pkill -SIGUSR2 waybar"
-
-        # Disable all effects
-        "$mainMod Shift, G, exec, ~/.config/hypr/gamemode.sh "
+        # screenshot
+        '',$mainMod SHIFT, S, exec, grim -g "$(slurp)" - | swappy -f -''      
       ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
