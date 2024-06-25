@@ -102,7 +102,6 @@
     ntfs3g
     mesa
     btop
-    zsh
     helix
     signal-desktop
     spotifyd
@@ -199,6 +198,10 @@
     extraPackages = [ pkgs.amdvlk ];
     extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
   };
+
+  # default shell 
+  users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
 
   # printing service
   services.printing.enable = true;
