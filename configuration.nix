@@ -9,9 +9,8 @@
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
   ];
-
   # hyprland
-  programs.hyprland = { enable = true; };
+  programs.hyprland.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

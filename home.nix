@@ -3,6 +3,7 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
+  imports = [ ./zsh.nix ];
   home.username = "yuna";
   home.homeDirectory = "/home/yuna";
 
@@ -60,7 +61,6 @@
     };
   };
 
-  # hyprland
   # waybar
   programs.waybar = {
     enable = true;
