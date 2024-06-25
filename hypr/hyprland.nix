@@ -47,7 +47,7 @@
       };
 
       decoration = {
-        rounding = 6;
+        rounding = 4;
         active_opacity = 0.98;
         inactive_opacity = 0.98;
 
@@ -121,6 +121,7 @@
         "$mainMod, F, togglefloating,"
         "$mainMod, D, exec, wofi --show drun"
         "$mainMod, P, pseudo, # dwindle"
+        "$mainMod, B, togglesplit"
         ''
           $mainMod SHIFT, S, exec, grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png | swaync "Screenshot of the region taken" -t 1000 #''
 
