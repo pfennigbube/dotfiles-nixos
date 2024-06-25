@@ -6,11 +6,11 @@ copying is of course allowed ✔️
      
 # Biggest thanks to all the people which helped me to get this rice done!
      
-[my friend which got me into nix](https://github.com/AimPizza)
-[the great user wiki](https://nixos.wiki/wiki/Main_Page)
-[the official wiki](https://wiki.nixos.org/wiki/NixOS_Wiki)
-[notusknots dots](https://github.com/notusknot/dotfiles-nix)
-[andreys dots](https://github.com/Andrey0189/nixos-config)
+- [my friend which got me into nix](https://github.com/AimPizza)
+- [the great user wiki](https://nixos.wiki/wiki/Main_Page)
+- [the official wiki](https://wiki.nixos.org/wiki/NixOS_Wiki)
+- [notusknots dots](https://github.com/notusknot/dotfiles-nix)
+- [andreys dots](https://github.com/Andrey0189/nixos-config)
      
 i cant call up every name from which i got inspiration and help from but if you ever find 
 anything that looks almost like mine, my biggest thanks!
