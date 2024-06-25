@@ -132,10 +132,10 @@
         "$mainMod, j, movefocus, d"
 
         # Moving windows
-        "$mainMod SHIFT, h, swapwindow, l"
-        "$mainMod SHIFT, l, swapwindow, r"
-        "$mainMod SHIFT, k, swapwindow, u"
-        "$mainMod SHIFT, j, swapwindow, d"
+        "$mainMod SHIFT, h, movewindow, l"
+        "$mainMod SHIFT, l, movewindow, r"
+        "$mainMod SHIFT, k, movewindow, u"
+        "$mainMod SHIFT, j, movewindow, d"
 
         # Window resizing                     X  Y
         "$mainMod CTRL, h, resizeactive, -60 0"
@@ -170,6 +170,7 @@
         # Scroll through existing workspaces with mainMod + scroll
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
+         
       ];
     };
   };

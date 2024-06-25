@@ -72,6 +72,8 @@
     workspace = 5, monitor:DP-2
     workspace = 6, monitor:HDMI-A-1
     workspace = 7, monitor:DP-2
+    bindm = $mainMod, mouse:272, movewindow
+    bindm = $mainMod, mouse:273, resizewindow
   '';
   # waybar
   programs.waybar = {
