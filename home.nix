@@ -27,6 +27,9 @@
     userEmail = "lucaseckardt6@tutanota.com";
   };
 
+  # kitty
+  programs.kitty = { enable = true; };
+
   # helix
   programs.helix = {
     enable = true;
@@ -57,6 +60,7 @@
     };
   };
 
+  # hyprland
   # waybar
   programs.waybar = {
     enable = true;
