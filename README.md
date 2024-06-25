@@ -27,5 +27,32 @@ anything that looks almost like mine, my biggest thanks!
 - Editor: 🗒️ Helix
 
   # Installation
+  **Important!**
+  - **Read through all files and see if there are any files that could harm your PC!**
+  - **Dont use my hardware-configuration.nix.. the values for the drives are only for my drives.. You have to move you own hardware-configuration.nix (/etc/nixos) into the dotfiles folder!**
+  ## Actual Install Process
+  What do you need?
+  - [A running NixOS installation](https://nixos.org/manual/nixos/stable/index.html#ch-installation)
+   - The best would be with a USB-Stick and any non Minimal NixOS variant with a Desktop Environment like GNOME or KDE (just makes the install process easier) 
+  - [git installed as a package](https://nixos.org/manual/nixos/stable/#sec-package-management)
+  Clone my repo (git clone) and change the directory (cd) into the repo
+```bash
+git clone https://github.com/pfennigbube/dotfiles-nixos && cd dotfiles-nixos
+```
+move your hardware-configuration.nix from /etc/nixos to the dotfiles directory and just replace mine
+```bash
+mv /etc/nixos/hardware-configuration  dotfiles-nixos/
+```
+now you should not have to care about anything anymore and just [rebuild the flake](https://nixos.wiki/wiki/Nixos-rebuild) that i put into that directory! (you need to be in the directory of the flake, later you can just type rb and it will automatically rebuild from that directory (linux moment 👍 )
+```bash
+sudo nixos-rebuild switch --flake .#yourcomputerhostname
+```
+("yourcomputerhostname has to be changed to the name of your machine (#default should work fine tho)
+and thats it! after some waiting you can reboot your pc and it should look just like mine!
+  # Troubleshooting
+  - just contact me or open an issue!
+
+**Happy Coding!** 💚
+
      
       
