@@ -109,6 +109,7 @@
     widevine-cdm
     github-desktop
     fastfetch
+    nwg-displays
     # languages
     nil
     rustup

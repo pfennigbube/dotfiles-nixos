@@ -1,4 +1,4 @@
-{
+{ config, pkgs, lib, ... }: {
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -6,7 +6,6 @@
     settings = {
       "$mainMod" = "SUPER";
 
-      monitor = "DP-2,1920x1080@144,1680x0,1";
       env = [
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
@@ -38,7 +37,7 @@
         gaps_in = 5;
         gaps_out = 15;
         border_size = 2;
-        "col.active_border" = "rgb(b4befe)";
+        "col.active_border" = lib.mkForce "rgb(b4befe)";
         "col.inactive_border" = "rgb(45475a)";
         allow_tearing = true;
 
@@ -60,9 +59,6 @@
         };
 
         drop_shadow = false;
-        shadow_range = 4;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(1a1a1aee)";
       };
 
       animations = {
@@ -112,6 +108,7 @@
         "swww init"
         "swww img ~/dotfiles-nixos/wallpaper/cogecha1.png"
         "waybar"
+        "swaync"
       ];
 
       bind = [
@@ -124,24 +121,26 @@
         "$mainMod, F, togglefloating,"
         "$mainMod, D, exec, wofi --show drun"
         "$mainMod, P, pseudo, # dwindle"
+        ''
+          $mainMod SHIFT, S, exec, grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png | swaync "Screenshot of the region taken" -t 1000 #''
 
         # Move focus with mainMod + arrow keys
-        "$mainMod, h,  movefocus, l"
+        "$mainMod, h, movefocus, l"
         "$mainMod, l, movefocus, r"
-        "$mainMod, k,    movefocus, u"
-        "$mainMod, j,  movefocus, d"
+        "$mainMod, k, movefocus, u"
+        "$mainMod, j, movefocus, d"
 
         # Moving windows
-        "$mainMod SHIFT, h,  swapwindow, l"
+        "$mainMod SHIFT, h, swapwindow, l"
         "$mainMod SHIFT, l, swapwindow, r"
-        "$mainMod SHIFT, k,    swapwindow, u"
-        "$mainMod SHIFT, j,  swapwindow, d"
+        "$mainMod SHIFT, k, swapwindow, u"
+        "$mainMod SHIFT, j, swapwindow, d"
 
         # Window resizing                     X  Y
-        "$mainMod CTRL, h,  resizeactive, -60 0"
+        "$mainMod CTRL, h, resizeactive, -60 0"
         "$mainMod CTRL, l, resizeactive,  60 0"
-        "$mainMod CTRL, k,    resizeactive,  0 -60"
-        "$mainMod CTRL, j,  resizeactive,  0  60"
+        "$mainMod CTRL, k, resizeactive,  0 -60"
+        "$mainMod CTRL, j, resizeactive,  0  60"
 
         # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"
@@ -170,15 +169,6 @@
         # Scroll through existing workspaces with mainMod + scroll
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
-
-        # screenshot
-        '',$mainMod SHIFT, S, exec, grim -g "$(slurp)" - | swappy -f -''
-      ];
-
-      # Move/resize windows with mainMod + LMB/RMB and dragging
-      bindm = [
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
       ];
     };
   };
