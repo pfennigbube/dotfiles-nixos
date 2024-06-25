@@ -6,8 +6,7 @@
     settings = {
       "$mainMod" = "SUPER";
 
-      monitor = "DP-2,1920x1080@144,1680x0,1";
-      monitor = "HDMI-A-1,1680x1050@60,0x0,1";
+      monitor = [ "DP-2,1920x1080@144,1680x0,1" "HDMI-A-1,1680x1050@60,0x0,1" ];
 
       env = [
         "XDG_CURRENT_DESKTOP,Hyprland"
@@ -32,8 +31,8 @@
 
         sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
         accel_profile = "flat";
-        force_no_accel = true
-        
+        force_no_accel = true;
+
       };
 
       general = {
@@ -108,7 +107,7 @@
       };
 
       windowrule = [ "float, ^(imv)$" "float, ^(mpv)$" ];
-      windowrulev2 = [ "immediate, class:^(steam_app_\d+)"];
+      windowrulev2 = [ "immediate, class:^(steam_app_d+)" ];
 
       exec-once = [
         "swww init"
@@ -126,7 +125,7 @@
         "$mainMod, F, togglefloating,"
         "$mainMod, D, exec, wofi --show drun"
         "$mainMod, P, pseudo, # dwindle"
-        
+
         # Move focus with mainMod + arrow keys
         "$mainMod, h,  movefocus, l"
         "$mainMod, l, movefocus, r"
@@ -174,7 +173,7 @@
         "$mainMod, mouse_up, workspace, e-1"
 
         # screenshot
-        '',$mainMod SHIFT, S, exec, grim -g "$(slurp)" - | swappy -f -''      
+        '',$mainMod SHIFT, S, exec, grim -g "$(slurp)" - | swappy -f -''
       ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
