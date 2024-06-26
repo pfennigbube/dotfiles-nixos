@@ -1,5 +1,5 @@
 # NixOS Dotfiles ❄️
-*My personal nixos configuration for NixOS. Grab a cup of Tea and look around!*
+*My personal configuration for NixOS. Grab a cup of tea and look around!*
 copying is of course allowed ✔️
 ![showcase of my rice](https://github.com/pfennigbube/dotfiles-nixos/blob/main/screenshots/nixosshowcase1.png)
 ![showcase of my rice2](https://github.com/pfennigbube/dotfiles-nixos/blob/main/screenshots/nixosshowcase2.png)
