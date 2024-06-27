@@ -7,7 +7,7 @@ copying is of course allowed ✔️
 # Biggest thanks to all the people who helped me to get this rice done!
      
 - [my friend which got me into nix](https://github.com/AimPizza)
-- [the great user wiki](https://nixos.wiki/wiki/Main_Page)
+- [the great user wiki](https://wiki.nixos.org/wiki/Main_Page)
 - [the official wiki](https://wiki.nixos.org/wiki/NixOS_Wiki)
 - [notusknots dots](https://github.com/notusknot/dotfiles-nix)
 - [andreys dots](https://github.com/Andrey0189/nixos-config)
@@ -43,7 +43,7 @@ move your hardware-configuration.nix from /etc/nixos to the dotfiles directory a
 ```bash
 mv /etc/nixos/hardware-configuration  dotfiles-nixos/
 ```
-now you should not have to care about anything anymore and just [rebuild the flake](https://nixos.wiki/wiki/Nixos-rebuild) that i put into that directory! (you need to be in the directory of the flake, later you can just type rb and it will automatically rebuild from that directory (linux moment 👍 )
+now you should not have to care about anything anymore and just [rebuild the flake](https://wiki.nixos.org/wiki/Nixos-rebuild) that i put into that directory! (you need to be in the directory of the flake, later you can just type rb and it will automatically rebuild from that directory (linux moment 👍 )
 ```bash
 sudo nixos-rebuild switch --flake .#yourcomputerhostname
 ```
