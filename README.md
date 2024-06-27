@@ -7,7 +7,6 @@ copying is of course allowed ✔️
 # Biggest thanks to all the people who helped me to get this rice done!
      
 - [my friend which got me into nix](https://github.com/AimPizza)
-- [the great user wiki](https://wiki.nixos.org/wiki/Main_Page)
 - [the official wiki](https://wiki.nixos.org/wiki/NixOS_Wiki)
 - [notusknots dots](https://github.com/notusknot/dotfiles-nix)
 - [andreys dots](https://github.com/Andrey0189/nixos-config)
