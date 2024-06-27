@@ -44,9 +44,12 @@
     xkb.variant = "";
     displayManager.gdm.enable = true;
     displayManager.gdm.wayland = true;
-    displayManager.sessionPackages = [pkgs.hyprland];
-    libinput.enable = true;    
   };
+  # further additions to gdm
+  services.displayManager.sessionPackages = [pkgs.hyprland];
+  services.libinput.enable = true;
+
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.yuna = {
     isNormalUser = true;
@@ -116,6 +119,8 @@
     # WMs
     hyprland
     xdg-desktop-portal-hyprland
+    xdg-desktop-portal
+    xdg-desktop-portal-wlr
 
   ];
 

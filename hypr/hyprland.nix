@@ -109,6 +109,7 @@
         "swww img ~/dotfiles-nixos/wallpaper/cogecha1.png"
         "waybar"
         "swaync"
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
 
       bind = [
