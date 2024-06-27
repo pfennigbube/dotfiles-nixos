@@ -44,23 +44,6 @@ move your hardware-configuration.nix from /etc/nixos to the dotfiles directory a
 mv /etc/nixos/hardware-configuration  dotfiles-nixos/
 ```
 
-change the user that is in the configuration.nix in this places:
-```nix
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.<"yourname"> = {
-    isNormalUser = true;
-    description = "<yourname>";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ ];
-```
-
-```nix
-home-manager = {
-    extraSpecialArgs = {inherit inputs; };
-    users = { <"your user"> = import ./home.nix; };
-```
-or else you would use my user which is of course wrong
-
 now you should not have to care about anything anymore and just [rebuild the flake](https://wiki.nixos.org/wiki/Nixos-rebuild) that i put into that directory! (you need to be in the directory of the flake, later you can just type rb and it will automatically rebuild from that directory (linux moment 👍 )
 ```bash
 sudo nixos-rebuild switch --flake .#yourcomputerhostname
