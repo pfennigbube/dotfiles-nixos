@@ -29,7 +29,7 @@ anything that looks almost like mine, my biggest thanks!
   **Important!**
   - **Read through all files and see if there are any files that could harm your PC!**
   - **Dont use my hardware-configuration.nix.. the values for the drives are only for my drives.. You have to move you own hardware-configuration.nix (/etc/nixos) into the dotfiles folder!**
-  - **Also change the values for your monitor in the home manager file (dotfiles-nixos/home.nix) to make them fit to your monitor setup. *further notes are in the official [hyprland wiki](https://wiki.hyprland.org/Configuring/Monitors/)*  
+  - **Also change the values for your monitor in the home manager file (dotfiles-nixos/home.nix) to make them fit to your monitor setup.** *further notes are in the official [hyprland wiki](https://wiki.hyprland.org/Configuring/Monitors/)*  
   ## Actual Install Process
   What do you need?
   - [A running NixOS installation](https://nixos.org/manual/nixos/stable/index.html#ch-installation)
