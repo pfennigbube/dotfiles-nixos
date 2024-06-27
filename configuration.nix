@@ -14,12 +14,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # gnome for desktop manager
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-  };
-
   networking.hostName = "nixos"; # hostname
 
   # Enable networking
@@ -45,10 +39,14 @@
 
   # Configure keymap in X11
   services.xserver = {
+    enable = true; 
     xkb.layout = "us";
     xkb.variant = "";
+    displayManager.gdm.enable = true;
+    displayManager.gdm.wayland = true;
+    displayManager.sessionPackages = [pkgs.hyprland];
+    libinput.enable = true;    
   };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.yuna = {
     isNormalUser = true;
@@ -56,20 +54,18 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [ ];
   };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # search for packages: nix search wget
   environment.systemPackages = with pkgs; [
-    vim
     neovim
     syncthing
     vesktop
+    webcord
     steam
     librewolf
     mangohud
-    dolphin
     kitty
     waybar
     (pkgs.waybar.overrideAttrs (oldAttrs: {
@@ -79,6 +75,7 @@
     libnotify
     swww
     pipewire
+    wireplumber
     pavucontrol
     xfce.thunar
     spotify
@@ -93,8 +90,6 @@
     mpv
     wl-clipboard
     cowsay
-    rofi-wayland
-    vivaldi
     htop
     wofi
     ntfs3g
@@ -104,7 +99,6 @@
     signal-desktop
     spotifyd
     heroic
-    ungoogled-chromium
     qutebrowser
     widevine-cdm
     github-desktop

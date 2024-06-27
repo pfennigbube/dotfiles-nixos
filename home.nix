@@ -16,7 +16,7 @@
   # plain files is through 'home.file'.
   home.file = { };
 
-  home.sessionVariables = { EDITOR = "nvim"; };
+  home.sessionVariables = { EDITOR = "hx"; };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -58,6 +58,7 @@
       "webgl.disabled" = false;
       "privacy.resistFingerprinting" = true;
       "middlemouse.paste" = true;
+      "privacy.clearOnShutdown.history" = false;
     };
   };
 
