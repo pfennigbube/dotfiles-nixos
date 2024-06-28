@@ -48,7 +48,7 @@ now you should not have to care about anything anymore and just [rebuild the fla
 ```bash
 sudo nixos-rebuild switch --flake .#yourcomputerhostname
 ```
-("yourcomputerhostname" has to be changed to the name of your machine (#default or #nixos should work fine tho))
+("yourcomputerhostname" has to be changed to the name of your machine (#default or #nixos should work fine tho, you can find it in your own configuration.nix))
 
 
 and thats it! after some waiting you can reboot your pc and it should look just like mine!
@@ -57,5 +57,9 @@ and thats it! after some waiting you can reboot your pc and it should look just 
 
 **Happy Coding!** 💚
 
+# TODO
+- [ ] find a solution to change the hostname
+- [ ] change the passwort (maybe just use autologin idk?)
+- [ ] be satisfied 
      
       
