@@ -108,6 +108,7 @@
     fastfetch
     nwg-displays
     gimp
+    bat
     # languages
     nil
     rustup
