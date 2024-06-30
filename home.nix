@@ -1,9 +1,17 @@
-{ inputs, config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  imports = [ ./zsh.nix ./hypr/hyprland.nix ];
+  imports = [
+    ./zsh.nix
+    ./hypr/hyprland.nix
+  ];
   home.username = "yuna";
   home.homeDirectory = "/home/yuna";
 
@@ -16,7 +24,9 @@
   # plain files is through 'home.file'.
   home.file = { };
 
-  home.sessionVariables = { EDITOR = "hx"; };
+  home.sessionVariables = {
+    EDITOR = "hx";
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -26,10 +36,35 @@
     enable = true;
     userName = "pfennigbube";
     userEmail = "lucaseckardt6@tutanota.com";
+    extraConfig = {
+      init = {
+        defaultBranch = "main";
+      };
+    };
   };
 
   # kitty
-  programs.kitty = { enable = true; };
+  programs.kitty = {
+    enable = true;
+    settings = {
+      shell_integretation = true;
+      confirm_os_window_close = -1;
+      enable_audio_bell = false;
+    };
+  };
+
+  # bat 
+  programs.bat.enable = true;
+
+  # xdg.portal.. maybe screensharing
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gnome
+    ];
+    config.common.default = "*";
+  };
 
   # helix
   programs.helix = {
@@ -41,15 +76,23 @@
         select = "underline";
       };
     };
-    languages.language = [{
-      name = "nix";
-      auto-format = true;
-      formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt-classic";
-    }];
+    languages.language = [
+      {
+        name = "rust";
+        auto-format = false;
+        formatter.command = "${pkgs.rustfmt}/bin/rustfmt";
+      }
+      {
+        name = "nix";
+        auto-format = true;
+        formatter.command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
+      }
+    ];
   };
-
   # qutebrowser
-  programs.qutebrowser = { enable = true; };
+  programs.qutebrowser = {
+    enable = true;
+  };
 
   # librwolf
   programs.librewolf = {
@@ -59,6 +102,9 @@
       "privacy.resistFingerprinting" = true;
       "middlemouse.paste" = true;
       "privacy.clearOnShutdown.history" = false;
+      "network.cookie.lifetimePolicy" = 0;
+      "privacy.clearOnShutdown.cookies" = false;
+      "general.autoScroll" = true;
     };
   };
 
@@ -208,53 +254,74 @@
 
 
     '';
-    settings = [{
-      "layer" = "top";
-      "position" = "top";
-      modules-left = [ "custom/launcher" "hyprland/workspaces" ];
-      modules-center = [ "clock" "workspaces" ];
-      modules-right = [ "pulseaudio" "memory" "cpu" "tray" ];
-      "custom/launcher" = {
-        "format" = " ";
-        "on-click" = "pkill rofi || rofi2";
-        "on-click-middle" = "exec default_wall";
-        "on-click-right" = "exec wallpaper_random";
-        "tooltip" = false;
-      };
-      "custom/cava-internal" = {
-        "exec" = "sleep 1s && cava-internal";
-        "tooltip" = false;
-      };
-      "pulseaudio" = {
-        "scroll-step" = 1;
-        "format" = "{icon} {volume}%";
-        "format-muted" = "󰖁 Muted";
-        "format-icons" = { "default" = [ "" "" "" ]; };
-        "on-click" = "pamixer -t";
-        "tooltip" = false;
-      };
-      "clock" = {
-        "interval" = 1;
-        "format" = "{:%I:%M %p  %A %b %d}";
-        "tooltip" = true;
-        "tooltip-format" = ''
-          {=%A; %d %B %Y}
-          <tt>{calendar}</tt>'';
-      };
-      "memory" = {
-        "interval" = 1;
-        "format" = "󱖢 {percentage}%";
-        "states" = { "warning" = 85; };
-      };
-      "cpu" = {
-        "interval" = 1;
-        "format" = "󰍛 {usage}%";
-      };
+    settings = [
+      {
+        "layer" = "top";
+        "position" = "top";
+        modules-left = [
+          "custom/launcher"
+          "hyprland/workspaces"
+        ];
+        modules-center = [
+          "clock"
+          "workspaces"
+        ];
+        modules-right = [
+          "pulseaudio"
+          "memory"
+          "cpu"
+          "tray"
+        ];
+        "custom/launcher" = {
+          "format" = " ";
+          "on-click" = "pkill rofi || rofi2";
+          "on-click-middle" = "exec default_wall";
+          "on-click-right" = "exec wallpaper_random";
+          "tooltip" = false;
+        };
+        "custom/cava-internal" = {
+          "exec" = "sleep 1s && cava-internal";
+          "tooltip" = false;
+        };
+        "pulseaudio" = {
+          "scroll-step" = 1;
+          "format" = "{icon} {volume}%";
+          "format-muted" = "󰖁 Muted";
+          "format-icons" = {
+            "default" = [
+              ""
+              ""
+              ""
+            ];
+          };
+          "on-click" = "pamixer -t";
+          "tooltip" = false;
+        };
+        "clock" = {
+          "interval" = 1;
+          "format" = "{:%I:%M %p  %A %b %d}";
+          "tooltip" = true;
+          "tooltip-format" = ''
+            {=%A; %d %B %Y}
+            <tt>{calendar}</tt>'';
+        };
+        "memory" = {
+          "interval" = 1;
+          "format" = "󱖢 {percentage}%";
+          "states" = {
+            "warning" = 85;
+          };
+        };
+        "cpu" = {
+          "interval" = 1;
+          "format" = "󰍛 {usage}%";
+        };
 
-      "tray" = {
-        "icon-size" = 15;
-        "spacing" = 5;
-      };
-    }];
+        "tray" = {
+          "icon-size" = 15;
+          "spacing" = 5;
+        };
+      }
+    ];
   };
 }
